@@ -4,10 +4,10 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
             python3-virtualenv \
             python3-dev && \
-    mkdir -p /etc/laika/laika
+    mkdir -p /etc/laika
 
-COPY laika/ /etc/laika/laika
-COPY pyproject.toml /etc/laika
+COPY ./src /etc/laika
+COPY ./pyproject.toml /etc/laika
 
 RUN pip3 install -U \
         pip \

@@ -3,6 +3,11 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
+@app.get("/status")
+def status():
+    return {"api_status": True, "db_status": False}
+
+
 @app.get("/status/space-api")
 def status_space_api():
     return {
