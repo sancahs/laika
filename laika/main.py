@@ -6,17 +6,21 @@ app = FastAPI()
 @app.get("/status/space-api")
 def status_space_api():
     return {
-        "space": "Sanca Hackerspace",
         "api_compatibility": ["15"],
-        "logo": "",
+        "space": "Sanca Hackerspace",
+        "logo": "https://hackerspace.sanca.log.br/assets/img/logo-sanca-hackerspace.png",
         "url": "https://hackerspace.sanca.log.br",
         "location": {
-            "address": "",
-            "lat": "",
-            "lon": "",
+            "address": "R. Dona Ana Prado, 18 - Vila Prado, São Carlos - SP, 13574-031",
+            "lat": -22.022418551785602,
+            "lon": -47.89997796075527,
+            "country_code": "BR",
+            "timezone": "America/Sao_Paulo",
+            "hint": "A entrada fica em outra rua. É o portão laranja em frente a loja de água 'IBIRÁGUA'",
         },
         "state": {
             "open": False,
+            "lastchange": 1776828925.712378,
         },
         "contact": {
             "telegram": "@sanca_hs"
