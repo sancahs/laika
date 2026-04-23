@@ -10,3 +10,6 @@ runserver:
 
 devserver:
 	cd laika && uv run fastapi dev
+
+test:
+	uv run pytest -v
