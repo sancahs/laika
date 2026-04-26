@@ -38,3 +38,25 @@ def test_close_hackerspace(client):
     data = response.json()
     assert response.status_code == 200
     assert data == {"is_open": False, "status": "closed"}
+
+
+def test_get_hackerspace_open_status_open(client, db_session, hs_is_open):
+    hs_is_open.value = "open"
+    db_session.commit()
+
+    response = client.get("/v1/hackerspace/is-open")
+
+    data = response.json()
+    assert response.status_code == 200
+    assert data == {"is_open": True, "status": "open"}
+
+
+def test_get_hackerspace_open_status_closed(client, db_session, hs_is_open):
+    hs_is_open.value = "closed"
+    db_session.commit()
+
+    response = client.get("/v1/hackerspace/is-open")
+
+    data = response.json()
+    assert response.status_code == 200
+    assert data == {"is_open": False, "status": "closed"}

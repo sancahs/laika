@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from laika.services import CloseHackerspace, OpenHackerspace
+from laika.services import CloseHackerspace, GetHackerspaceOpenStatus, OpenHackerspace
 
 app = FastAPI()
 
@@ -47,3 +47,8 @@ def open_hackerspace():
 def close_hackerspace():
     status = CloseHackerspace().close()
     return {"is_open": False, "status": status}
+
+
+@app.get("/v1/hackerspace/is-open")
+def get_hackerspace_open_status():
+    return GetHackerspaceOpenStatus().get()
