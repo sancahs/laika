@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 
+from laika.services import CloseHackerspace, OpenHackerspace
+
 app = FastAPI()
 
 
@@ -33,3 +35,15 @@ def status_space_api():
         "issue_report_channels": ["telegram"],
         "projects": ["https://github.com/sancahs"],
     }
+
+
+@app.post("/v1/hackerspace/open")
+def open_hackerspace():
+    status = OpenHackerspace().open()
+    return {"is_open": True, "status": status}
+
+
+@app.post("/v1/hackerspace/close")
+def close_hackerspace():
+    status = CloseHackerspace().close()
+    return {"is_open": False, "status": status}
