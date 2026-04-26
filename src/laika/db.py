@@ -1,9 +1,11 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import mapped_column, DeclarativeBase, Mapped
+from sqlalchemy.orm import mapped_column, sessionmaker, DeclarativeBase, Mapped
 
 from laika.config import settings
 
 engine = create_engine(settings.db_url)
+
+Session = sessionmaker(engine)
 
 
 class Base(DeclarativeBase):
