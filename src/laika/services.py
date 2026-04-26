@@ -18,3 +18,10 @@ class CloseHackerspace(ToggleHackerspace):
         with Session.begin() as session:
             self.update_is_open(session, "close")
         return "closed"
+
+
+class GetHackerspaceOpenStatus():
+    def get(self):
+        with Session.begin() as session:
+            is_open = session.query(HackerspaceConfig).filter(HackerspaceConfig.key == "is_open").one()
+            return {"is_open": is_open.value == "open", "status": is_open.value}
